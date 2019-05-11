@@ -1,4 +1,4 @@
-<h1 align="center"> S-Split </h1><br>
+<h1 align="center"> SySplit </h1><br>
 <p align="center">
   <a href="https://gitpoint.co/">
     <img alt="SM64" title="SM64" src="https://imgur.com/OUFqFx9.png" width="168">
