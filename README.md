@@ -9,6 +9,7 @@
 
 - [Introduction](#introduction)
 - [Release](#release)
+- [Features](#features)
 - [Quick Setup](#quick-setup)
   - [Interface](#interface)
   - [LiveSplit Server](#livesplit-server)
@@ -23,15 +24,26 @@
 - [Author](#release)
 
 ## Introduction
-Inspired by Gerardo Cervantes's [Star Classifier](https://github.com/gerardocervantes8/Star-Classifier-For-Mario-64), AutoSplit64 functions by predicting the current star count from screenshots of the star counter.
+Inspired by Gerardo Cervantes's [Star Classifier](https://github.com/gerardocervantes8/Star-Classifier-For-Mario-64), AutoSplit64 saves your fingers from getting athritis by splitting for you. *
 
 AutoSplit64 is primarily designed for console use, however may still function for Emulator.
 For details on proper emulator configuration see Giboss's [Setup Guide](https://goo.gl/PKGDn6).
 
 For general Super Mario 64 questions please direct them toward the Super Mario 64 [discord](https://discord.gg/Xvk6AXQ).
 
+\* You're playing Mario so your hands are going to be screwed anyway, sorry.
+
 ## Release
 Version 0.1.0
+
+## Features
+* Automatically start/reset timer on console reset
+* Split on fadeout/fadein at specified star count
+* Split on DDD enter
+* Split on final star grab
+* Create custom routes with graphical interface
+* Automatically convert LiveSplit .lss files to AutoSplit64 routes
+
 
 ## Quick Setup
 Download the latest release. Extract contents and run `AutoSplit64.exe`.
