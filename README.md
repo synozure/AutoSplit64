@@ -115,7 +115,7 @@ Here you can find a list of common issues and potential fixes.
   * Manually increase brightness of capture
 
 ## Credit
-A big thanks to Gerardo Cervantes for use of his deep learning model!
+A big thanks to Gerardo Cervantes for open-sourcing his project!
 
 ## Contact
 Feel free to contact me on discord at Synozure#9813 with any questions!<br/>
