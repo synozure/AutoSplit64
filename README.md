@@ -95,24 +95,11 @@ If you are using a correctly configured version of AmaRecTV as shown (with windo
 ## Troubleshooting
 Here you can find a list of common issues and potential fixes.
 
-#### Star count won't update
-* Disable any software altering the colours of your screen
-* Disable any additional colour settings on your capture (i.e. saturation)
-* Ensure the video capture is of a reasonable resolution (640x480 recommended)
-* Check your capture coordinates are configured correctly in the capture editor
-
-#### Timer won't automatically reset
-* Refer to Star count won't update
-* Use the Reset Template tool to generate a custom reset template image
-
-#### The star count is detected, but the timer won't split
-* Refer to Timer won't automatically reset
-* Check your capture coordinates are configured correctly in the capture editor
-
-#### Timer won't split on fade-ins
-* If using an unpowered splitter, often the fade-in will be a light gray rather than white.
-  * Lower the white threshold value in settings -> thresholds
-  * Manually increase brightness of capture
+* Check capture coordinates are correct (`Right Click -> Edit Coordinates`)
+* Ensure LiveSplit server is running (`Right Click LiveSplit -> Control -> Start Server')
+* Check the correct route is loaded, and that the route file is accurate (i.e. correct star counts, fadeout/fadein counts)
+* Generate reset templates (`Right Click -> Generate Reset Templates`)
+* Make sure the captures colour settings (i.e. saturation) are default or close to default
 
 ## Credit
 A big thanks to Gerardo Cervantes for open-sourcing his project!
