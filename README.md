@@ -15,16 +15,12 @@
   - [LiveSplit Server](#livesplit-server)
   - [Game Capture](#game-capture)
 - [Troubleshooting](#troubleshooting)
-  - [Star count won't update](#star-count-wont-update)
-  - [Timer won't automatically reset](#timer-wont-automatically-reset)
-  - [The star count is detected, but the timer won't split](#the-star-count-is-detected-but-the-timer-wont-split)
-  - [Timer won't split on fade-ins](#timer-wont-split-on-fade-ins)
 - [Credit](#credit)
 - [Contact](#contact)
 - [Author](#release)
 
 ## Introduction
-Inspired by Gerardo Cervantes's [Star Classifier](https://github.com/gerardocervantes8/Star-Classifier-For-Mario-64), AutoSplit64 saves your fingers from getting athritis by splitting for you. *
+Inspired by Gerardo Cervantes's [Star Classifier](https://github.com/gerardocervantes8/Star-Classifier-For-Mario-64), AutoSplit 64 saves your fingers from getting athritis by splitting for you. *
 
 AutoSplit64 is primarily designed for console use, however may still function for Emulator.
 For details on proper emulator configuration see Giboss's [Setup Guide](https://goo.gl/PKGDn6).
@@ -42,7 +38,7 @@ Version 0.1.0
 * Split on DDD enter
 * Split on final star grab
 * Create custom routes with graphical interface
-* Automatically convert LiveSplit .lss files to AutoSplit64 routes
+* Automatically convert LiveSplit .lss files to AutoSplit 64 routes
 
 
 ## Quick Setup
@@ -69,14 +65,8 @@ AutoSplit64 communicates with LiveSplit via the LiveSplit Server component.
 
 Please download the latest version [here](https://github.com/LiveSplit/LiveSplit.Server).
 
-<p>
-  <a href="https://gitpoint.co/">
-    <img alt="SM64" title="SM64" src="https://i.imgur.com/f56xwll.png" width="750">
-  </a>
-</p>
-
 ### Game Capture
-To be able to run correctly, we must first let AutoSplit64 know where to capture.
+To be able to run correctly, we must let AutoSplit 64 know where to capture.
 
 Make sure you have your capture software open (i.e., AmaRecTV), then open the Capture Editor (`Right-Click -> Edit Coordinates`):
 <p>
@@ -90,10 +80,24 @@ Select the correct process from the `Process` drop-down and position the `Game R
 When finished, press `Apply` to save changes.
 
 ****NOTE:****<br/>
-If you are using a correctly configured version of AmaRecTV as shown (with windows size at 100% `right-click AmaRecTV -> 100%`), the default settings should already be set appropriately.
+If you are using a correctly configured version of AmaRecTV as shown (with windows size at 100% `Right-Click AmaRecTV -> 100%`), the default settings should already be set appropriately.
+
+### Routes
+We must let AutoSplit 64 know when we want splits to occur. This can be done by using the Route Editor (`Right-Click -> Edit Route`) to generate route files.
+
+To create a route, an understanding of how splits occur is important. For a regular split it will trigger when the specified number of stars have been collected, and a set amount of fadeouts or fadeins have occurred after the star count was reached, or the last split occurred.
+
+Every time a star is collected, or a split, undo or skip is triggered, the fadeout and fadein count are reset to 0. 
+The Route Editor has been designed to look and function similar to the split editor found in LiveSplit, to make it as familiar as possible.
+
+The easiest method of creating routes is to import your splits you use for LiveSplit. To do this, in the Route Editor, nagivate to `File -> Convert LSS`. Open the `.lss` file you use with LiveSplit. AutoSplit 64 will attempt to fill in as many details as possible to simplify the route creation process, however it is important you check each split to make sure it is correct.
+
+Some of the auto-filled parameters include:
+* `Split Title`
+* `Star Count` - If the split title contains a number (usually used to indicate star count), this will be copied to the `Star Count` field
 
 ## Troubleshooting
-Here you can find a list of common issues and potential fixes.
+If you encounter any issues, please run through all steps below.
 
 * Check capture coordinates are correct (`Right Click -> Edit Coordinates`)
 * Ensure LiveSplit server is running (`Right Click LiveSplit -> Control -> Start Server')
