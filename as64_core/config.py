@@ -45,7 +45,10 @@ def get(section, key=None):
         else:
             return _config[section]
     except KeyError:
-        return None
+        if key:
+            return _defaults[section][key]
+        else:
+            return _defaults[section]
 
 
 def get_default(section, key=None):
@@ -103,9 +106,12 @@ def flush_rollback():
 
 def load_config():
     global _config
-    with open(_CONFIG_FILE_NAME) as file:
-        data = json.load(file)
-        _config = data
+    try:
+        with open(_CONFIG_FILE_NAME) as file:
+            data = json.load(file)
+            _config = data
+    except FileNotFoundError:
+        generate_config()
 
 
 def load_defaults():
