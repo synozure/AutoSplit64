@@ -1,0 +1,137 @@
+{
+    "__route__": true,
+    "title": "70 WF9 CCM17",
+    "category": "70 Star",
+    "initial_star": 0,
+    "version": "US",
+    "splits": [
+        {
+            "title": "WF (9)",
+            "star_count": 9,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/02_WF/WF1.png"
+        },
+        {
+            "title": "DW (12)",
+            "star_count": 12,
+            "fade_out": 2,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/Bowser/BitDW.png"
+        },
+        {
+            "title": "CCM (17)",
+            "star_count": 17,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/04_CCM/CCM3.png"
+        },
+        {
+            "title": "BBH (20)",
+            "star_count": 19,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/05_BBH/BBH4.png"
+        },
+        {
+            "title": "SSL (24)",
+            "star_count": 24,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/08_SSL/SSL2.png"
+        },
+        {
+            "title": "LLL (30)",
+            "star_count": 30,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/07_LLL/LLL1.png"
+        },
+        {
+            "title": "DDD(33)",
+            "star_count": 33,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/09_DDD/DDD1.png"
+        },
+        {
+            "title": "BitFS (34)",
+            "star_count": 34,
+            "fade_out": 2,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/Bowser/BitFS.png"
+        },
+        {
+            "title": "WDW (39)",
+            "star_count": 39,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/11_WDW/WDW7.png"
+        },
+        {
+            "title": "THI (42)",
+            "star_count": 42,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/13_THI/THI1.png"
+        },
+        {
+            "title": "TTM (48)",
+            "star_count": 48,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/12_TTM/TTM1.png"
+        },
+        {
+            "title": "SL (52)",
+            "star_count": 52,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/10_SL/SL1.png"
+        },
+        {
+            "title": "HMC (58)",
+            "star_count": 58,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/06_HMC/HMC1.png"
+        },
+        {
+            "title": "RR (62)",
+            "star_count": 62,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/15_RR/RR1.png"
+        },
+        {
+            "title": "TTC (69)",
+            "star_count": 69,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/14_TTC/TTC3.png"
+        },
+        {
+            "title": "BitS (70)",
+            "star_count": 70,
+            "fade_out": -1,
+            "fade_in": -1,
+            "split_type": "Final",
+            "icon_path": "resources/split_icons/Bowser/BitS.png"
+        }
+    ]
+}

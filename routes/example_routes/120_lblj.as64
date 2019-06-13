@@ -1,0 +1,193 @@
+{
+    "__route__": true,
+    "title": "120 LBLJ",
+    "category": "120 Star",
+    "initial_star": 0,
+    "version": "JP",
+    "splits": [
+        {
+            "title": "BitDW (1)",
+            "star_count": 1,
+            "fade_out": 2,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/Bowser/BitDW.png"
+        },
+        {
+            "title": "WF (8)",
+            "star_count": 8,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/02_WF/WF1.png"
+        },
+        {
+            "title": "JRB (16)",
+            "star_count": 16,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/03_JRB/JRB1.png"
+        },
+        {
+            "title": "PSS (19)",
+            "star_count": 19,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/Misc/slide2.png"
+        },
+        {
+            "title": "BoB (26)",
+            "star_count": 26,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/01_BoB/Bob1.png"
+        },
+        {
+            "title": "SSL (34)",
+            "star_count": 34,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/08_SSL/SSL2.png"
+        },
+        {
+            "title": "HMC100 (36)",
+            "star_count": 36,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/06_HMC/HMC7.png"
+        },
+        {
+            "title": "HMC (42)",
+            "star_count": 42,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/06_HMC/HMC1.png"
+        },
+        {
+            "title": "LLL (50)",
+            "star_count": 50,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/07_LLL/LLL1.png"
+        },
+        {
+            "title": "VC (52)",
+            "star_count": 52,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/Misc/Vanish Cap Under the Moat.png"
+        },
+        {
+            "title": "CCM (59)",
+            "star_count": 59,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/04_CCM/CCM3.png"
+        },
+        {
+            "title": "BBH (66)",
+            "star_count": 66,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/05_BBH/BBH4.png"
+        },
+        {
+            "title": "DDD100 (68)",
+            "star_count": 68,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/09_DDD/DDD7.png"
+        },
+        {
+            "title": "BitFS (71)",
+            "star_count": 71,
+            "fade_out": 2,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/Bowser/BitFS.png"
+        },
+        {
+            "title": "DDD/Up (74)",
+            "star_count": 74,
+            "fade_out": 4,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/Bowser/BitDW - Door (lobby).png"
+        },
+        {
+            "title": "WDW (81)",
+            "star_count": 81,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/11_WDW/WDW7.png"
+        },
+        {
+            "title": "THI (88)",
+            "star_count": 88,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/13_THI/THI1.png"
+        },
+        {
+            "title": "TTM (96)",
+            "star_count": 96,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/12_TTM/TTM1.png"
+        },
+        {
+            "title": "SL (103)",
+            "star_count": 103,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/10_SL/SL1.png"
+        },
+        {
+            "title": "Cloud Stage (104)",
+            "star_count": 104,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/Misc/cloud.png"
+        },
+        {
+            "title": "TTC (111)",
+            "star_count": 111,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/14_TTC/TTC3.png"
+        },
+        {
+            "title": "RR (119)",
+            "star_count": 119,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/15_RR/RR1.png"
+        },
+        {
+            "title": "BiTs (120)",
+            "star_count": 120,
+            "fade_out": -1,
+            "fade_in": -1,
+            "split_type": "Final",
+            "icon_path": "resources/split_icons/Bowser/BitS.png"
+        }
+    ]
+}

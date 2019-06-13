@@ -1,0 +1,113 @@
+{
+    "__route__": true,
+    "title": "120 Randomizer",
+    "category": "120 Star",
+    "initial_star": 0,
+    "version": "US",
+    "splits": [
+        {
+            "title": "10",
+            "star_count": 10,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": ""
+        },
+        {
+            "title": "20",
+            "star_count": 20,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": ""
+        },
+        {
+            "title": "30",
+            "star_count": 30,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": ""
+        },
+        {
+            "title": "40",
+            "star_count": 40,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": ""
+        },
+        {
+            "title": "50",
+            "star_count": 50,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": ""
+        },
+        {
+            "title": "60",
+            "star_count": 60,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": ""
+        },
+        {
+            "title": "70",
+            "star_count": 70,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": ""
+        },
+        {
+            "title": "80",
+            "star_count": 80,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": ""
+        },
+        {
+            "title": "90",
+            "star_count": 90,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": ""
+        },
+        {
+            "title": "100",
+            "star_count": 100,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": ""
+        },
+        {
+            "title": "110",
+            "star_count": 110,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": ""
+        },
+        {
+            "title": "120",
+            "star_count": 120,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": ""
+        },
+        {
+            "title": "BiTs",
+            "star_count": 120,
+            "fade_out": -1,
+            "fade_in": -1,
+            "split_type": "Final",
+            "icon_path": ""
+        }
+    ]
+}

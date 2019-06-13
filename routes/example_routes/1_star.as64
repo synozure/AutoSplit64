@@ -1,0 +1,65 @@
+{
+    "__route__": true,
+    "title": "1 Star",
+    "category": "1 Star",
+    "initial_star": 0,
+    "version": "US",
+    "splits": [
+        {
+            "title": "LBLJ",
+            "star_count": 0,
+            "fade_out": 2,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/Bowser/BitDW - Door (lobby).png"
+        },
+        {
+            "title": "BitDW",
+            "star_count": 0,
+            "fade_out": 2,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/Bowser/BitDW.png"
+        },
+        {
+            "title": "SBLJ",
+            "star_count": 0,
+            "fade_out": -1,
+            "fade_in": -1,
+            "split_type": "Mips",
+            "icon_path": "resources/split_icons/Bowser/BitFS - Entrance.png"
+        },
+        {
+            "title": "DDD",
+            "star_count": 1,
+            "fade_out": 1,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/09_DDD/DDD1.png"
+        },
+        {
+            "title": "BitFS",
+            "star_count": 1,
+            "fade_out": 3,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/Bowser/BitFS.png"
+        },
+        {
+            "title": "BLJs",
+            "star_count": 1,
+            "fade_out": 4,
+            "fade_in": 0,
+            "split_type": "Normal",
+            "icon_path": "resources/split_icons/Misc/BLJ.png"
+        },
+        {
+            "title": "BitS",
+            "star_count": 1,
+            "fade_out": -1,
+            "fade_in": -1,
+            "split_type": "Final",
+            "icon_path": "resources/split_icons/Bowser/BitS.png"
+        }
+    ]
+}
