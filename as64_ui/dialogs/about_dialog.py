@@ -40,7 +40,7 @@ class AboutDialog(QtWidgets.QDialog):
 
     def initialize_window(self):
         self.setWindowTitle(self.window_title)
-        self.resize(400, 200)
+        self.resize(200, 50)
 
         # Create Layout
         self.setLayout(self.menu_layout)
@@ -74,6 +74,6 @@ class AboutDialog(QtWidgets.QDialog):
         author_layout.addWidget(self.author_lb)
 
         # Configure Layout
-        self.menu_layout.addLayout(icon_title_layout)
+        #self.menu_layout.addLayout(icon_title_layout)
         self.menu_layout.addLayout(version_layout)
         self.menu_layout.addLayout(author_layout)
