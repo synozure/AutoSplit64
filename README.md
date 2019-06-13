@@ -20,7 +20,7 @@
 - [Author](#release)
 
 ## Introduction
-Inspired by Gerardo Cervantes's [Star Classifier](https://github.com/gerardocervantes8/Star-Classifier-For-Mario-64), AutoSplit 64 saves your fingers from getting athritis by splitting for you. *
+Inspired by Gerardo Cervantes's [Star Classifier](https://github.com/gerardocervantes8/Star-Classifier-For-Mario-64), AutoSplit 64 analyzes your game capture to automate splitting.
 
 AutoSplit64 is primarily designed for console use, however may still function for Emulator.
 For details on proper emulator configuration see Giboss's [Setup Guide](https://goo.gl/PKGDn6).
@@ -45,18 +45,11 @@ Version 0.1.0
 Download the latest release. Extract contents and run `AutoSplit64.exe`.
 
 ### Interface
-Upon first run, you will encounter a blank interface:
-<p>
-  <a href="https://gitpoint.co/">
-    <img alt="SM64" title="SM64" src="https://i.imgur.com/ca2CXc5.png" width="320">
-  </a>
-</p>
-
 All windows and options are accessed via the right-click menu:
 
 <p>
   <a href="https://gitpoint.co/">
-    <img alt="SM64" title="SM64" src="https://i.imgur.com/GAfy9gR.png" width="320">
+    <img alt="SM64" title="SM64" src="https://imgur.com/0VEPCco.png" width="320">
   </a>
 </p>
 
