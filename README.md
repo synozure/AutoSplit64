@@ -64,7 +64,7 @@ To be able to run correctly, we must let AutoSplit 64 know where to capture.
 Make sure you have your capture software open (i.e., AmaRecTV), then open the Capture Editor (`Right-Click -> Edit Coordinates`):
 <p>
   <a href="https://gitpoint.co/">
-    <img alt="SM64" title="SM64" src="https://i.imgur.com/Zhf4qjc.png" width="1200">
+    <img alt="SM64" title="SM64" src="https://imgur.com/jzbFj05.png" width="1200">
   </a>
 </p>
 
