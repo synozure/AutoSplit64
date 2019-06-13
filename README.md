@@ -1,7 +1,7 @@
 <h1 align="center"> AutoSplit64 </h1><br>
 <p align="center">
   <a href="https://gitpoint.co/">
-    <img alt="SM64" title="SM64" src="https://imgur.com/OUFqFx9.png" width="168">
+    <img alt="SM64" title="SM64" src="https://imgur.com/B3eyq3A" width="168">
   </a>
 </p>
 
