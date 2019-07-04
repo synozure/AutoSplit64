@@ -17,6 +17,7 @@
 - [Troubleshooting](#troubleshooting)
 - [Credit](#credit)
 - [Contact](#contact)
+- [Donate](#donate)
 - [Author](#release)
 
 ## Introduction
@@ -100,6 +101,9 @@ A big thanks to Gerardo Cervantes for open-sourcing his project!
 ## Contact
 Feel free to contact me on discord at Synozure#9813 with any questions!<br/>
 Bug reports may also be left on the issues page of this repository.
+
+## Donate
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=9QRB5XHRQF4M4&currency_code=AUD&source=url)
 
 ## Author
 Synozure
