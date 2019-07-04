@@ -41,6 +41,8 @@ If attempting to use an emulator, you may also need to capture the game feed fro
 ## Quick Setup
 Download the latest release. Extract contents and run `AutoSplit64.exe`.
 
+LiveSplit timer should start at 3 seconds.
+
 ### Interface
 All windows and options are accessed via the right-click menu:
 
