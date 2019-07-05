@@ -92,6 +92,7 @@ If you encounter any issues, please run through all steps below.
 * Ensure LiveSplit server is running (`Right Click LiveSplit -> Control -> Start Server')
 * Check the correct route is loaded, and that the route file is accurate (i.e. correct star counts, fadeout/fadein counts)
 * Generate reset templates (`Right Click -> Generate Reset Templates`)
+* Enlarge your game capture window if it is very small
 * Make sure the captures colour settings (i.e. saturation) are default or close to default
 * If using an unpowered splitter, compare the whiteness of your star select screens to other players. If it is extremely dull you may need to increase your capture brightness
 
