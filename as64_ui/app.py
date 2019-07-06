@@ -197,6 +197,12 @@ class App(QtWidgets.QMainWindow):
         route_actions = {}
         category_menus = {}
 
+        # SRL MODE Action
+        srl_action = QtWidgets.QAction("SRL Mode", self, checkable=True)
+        context_menu.addAction(srl_action)
+        srl_action.setChecked(config.get("general", "srl_mode"))
+        context_menu.addSeparator()
+
         for category in sorted(self._routes, key=lambda text:[int(c) if c.isdigit() else c for c in re.split(r'(\d+)', text)]):
             if len(self._routes[category]) == 1 or category == "":
                 for route in self._routes[category]:
@@ -229,7 +235,11 @@ class App(QtWidgets.QMainWindow):
         action = context_menu.exec_(self.mapToGlobal(event.pos()))
 
         # Connections
-        if action == edit_route:
+        if action == srl_action:
+            checked = srl_action.isChecked()
+            config.set_key("general", "srl_mode", checked)
+            config.save_config()
+        elif action == edit_route:
             self.dialogs["route_editor"].show()
         elif action == file_action:
             self.open_route_browser()
