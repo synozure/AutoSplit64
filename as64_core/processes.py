@@ -252,11 +252,12 @@ class ProcessReset(Process):
         self._restart_split_delay = config.get("advanced", "restart_split_delay")
 
     def execute(self):
-        as64_core.reset()
-        time.sleep(self._restart_split_delay)
-        as64_core.split()
-        as64_core.enable_fade_count(False)
-        as64_core.star_count = as64_core.route.initial_star
+        if not config.get("general", "srl_mode"):
+            as64_core.reset()
+            time.sleep(self._restart_split_delay)
+            as64_core.split()
+            as64_core.enable_fade_count(False)
+            as64_core.star_count = as64_core.route.initial_star
         return ProcessReset.RESET
 
     def on_transition(self):
