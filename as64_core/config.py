@@ -46,9 +46,9 @@ def get(section, key=None):
             return _config[section]
     except KeyError:
         if key:
-            return _defaults[section][key]
+            return get_default(section, key)
         else:
-            return _defaults[section]
+            return get_default(section)
 
 
 def get_default(section, key=None):
@@ -75,7 +75,8 @@ def set_key(section, key, value):
         else:
             raise KeyError
     else:
-        raise KeyError
+        _config[section] = {}
+        _config[section][key] = value
 
 
 def set_section(section, value):
@@ -138,6 +139,3 @@ def generate_config():
     load_defaults()
     _config = copy.deepcopy(_defaults)
     save_config()
-
-
-
