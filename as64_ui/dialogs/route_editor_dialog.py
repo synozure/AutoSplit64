@@ -550,12 +550,12 @@ class RouteEditor(QtWidgets.QMainWindow):
         self.init_star_le.setText("0")
 
         # STAGE NAMES
-        DW_NAMES_IN = ['key1', 'key 1', 'bowser', 'dw', 'dark world', 'darkworld', 'bitdw']
+        DW_NAMES_IN = ['key1', 'key 1', 'bowser', 'dw', 'dark world', 'darkworld', 'bitdw', 'dworld']
         DW_NAMES_CONTAINS = ['key 1', 'dark world']
 
         LBLJ_NAMES_CONTAINS = ['lblj']
 
-        FS_NAMES_IN = ['key2', 'key 2', 'fs', 'firesea', 'fire sea', 'bitfs']
+        FS_NAMES_IN = ['key2', 'key 2', 'fs', 'firesea', 'fire sea', 'bitfs', 'fsea']
         FS_NAMES_CONTAINS = ['key 2', 'fire sea']
 
         UPSTAIRS_NAMES_CONTAINS = [r'/up', r'/upstairs', 'upstairs']
@@ -636,7 +636,11 @@ class RouteEditor(QtWidgets.QMainWindow):
                 split_type = SPLIT_FINAL
 
             if star_count == "" and i != len(segments) - 1:
-                star_count = self.split_table.item(self.split_table.rowCount() - 1, 2).text()
+                try:
+                    star_count = self.split_table.item(self.split_table.rowCount() - 1, 2).text()
+                except:
+                    star_count = ""
+                    print("EXCPETED")
 
             self._insert_row(title=name,
                              star_count=star_count,
@@ -657,6 +661,8 @@ class RouteEditor(QtWidgets.QMainWindow):
                     final_star = "70"
                 elif prev_star_count == 119:
                     final_star = "120"
+                elif prev_star_count > 0:
+                    final_star = str(prev_star_count)
 
                 self.split_table.setItem(self.split_table.rowCount() - 1, 2, QtWidgets.QTableWidgetItem(final_star))
             except (ValueError, IndexError):
