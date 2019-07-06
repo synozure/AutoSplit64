@@ -28,7 +28,7 @@ For details on proper emulator configuration see Giboss's [Setup Guide](https://
 If attempting to use an emulator, you may also need to capture the game feed from OBS instead of Project64.
 
 ## Release
-[Version 0.1.0](https://github.com/synozure/AutoSplit64/releases)
+[Version 0.1.1.1](https://github.com/synozure/AutoSplit64/releases)
 
 ## Features
 * Automatically start/reset timer on console reset
@@ -37,6 +37,7 @@ If attempting to use an emulator, you may also need to capture the game feed fro
 * Split on final star grab
 * Create custom routes with graphical interface
 * Automatically convert LiveSplit .lss files to AutoSplit 64 routes
+* SRL Mode - Prevents AutoSplit64 from detecting console resets to pass control to SRL
 
 
 ## Quick Setup
@@ -91,16 +92,18 @@ If you encounter any issues, please run through all steps below.
 * Check capture coordinates are correct (`Right Click -> Edit Coordinates`)
 * Ensure LiveSplit server is running (`Right Click LiveSplit -> Control -> Start Server')
 * Check the correct route is loaded, and that the route file is accurate (i.e. correct star counts, fadeout/fadein counts)
+* Make sure SRL Mode (Right Click -> SRL Mode) is disabled if you want AutoSplit64 to detect console resets
 * Generate reset templates (`Right Click -> Generate Reset Templates`)
 * Enlarge your game capture window if it is very small
 * Make sure the captures colour settings (i.e. saturation) are default or close to default
 * If using an unpowered splitter, compare the whiteness of your star select screens to other players. If it is extremely dull you may need to increase your capture brightness
+* Ensure your capture is set to a 4:3 aspect ratio (or close to)
 
 ## Credit
 A big thanks to Gerardo Cervantes for open-sourcing his project!
 
 ## Contact
-Feel free to contact me on discord at Synozure#9813 with any questions!<br/>
+Feel free to join the [discord](https://discord.gg/Q4TrSqB)!<br/>
 Bug reports may also be left on the issues page of this repository.
 
 ## Donate
