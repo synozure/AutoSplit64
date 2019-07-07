@@ -107,7 +107,7 @@ Feel free to join the [discord](https://discord.gg/Q4TrSqB)!<br/>
 Bug reports may also be left on the issues page of this repository.
 
 ## Donate
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=28PJSWKT77WLL&currency_code=AUD&source=url)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=28PJSWKT77WLL&currency_code=USD&source=url)
 
 ## Author
 Synozure
