@@ -18,8 +18,12 @@ class ProcessRunStart(Process):
 
     def __init__(self):
         super().__init__()
+        self._star_skip_enabled = config.get("general", "mid_run_start_enabled")
+        self._prev_prediction = -1
+        self._jump_predictions = 0
 
     def execute(self):
+        print(as64_core.prediction_info.prediction, as64_core.prediction_info.probability)
         if as64_core.fade_status in (as64_core.FADEOUT_COMPLETE, as64_core.FADEOUT_PARTIAL):
             return ProcessRunStart.FADEOUT
         else:
@@ -31,10 +35,20 @@ class ProcessRunStart(Process):
             if as64_core.prediction_info.prediction == as64_core.star_count and as64_core.prediction_info.probability > config.get("thresholds", "probability_threshold"):
                 as64_core.enable_fade_count(True)
                 return ProcessRunStart.START
-            elif prev_split_star <= as64_core.prediction_info.prediction <= as64_core.current_split().star_count and as64_core.prediction_info.probability > config.get("thresholds", "probability_threshold"):
-                as64_core.enable_fade_count(True)
-                as64_core.set_star_count(as64_core.prediction_info.prediction)
-                return ProcessRunStart.START
+            elif self._star_skip_enabled and prev_split_star <= as64_core.prediction_info.prediction <= as64_core.current_split().star_count and as64_core.prediction_info.probability > config.get("thresholds", "probability_threshold"):
+                if as64_core.prediction_info.prediction == self._prev_prediction:
+                    self._jump_predictions += 1
+                else:
+                    self._jump_predictions = 0
+
+                if self._jump_predictions >= 4:
+                    as64_core.enable_fade_count(True)
+                    as64_core.set_star_count(as64_core.prediction_info.prediction)
+                    self._jump_predictions = 0
+                    self._prev_prediction = -1
+                    return ProcessRunStart.START
+
+                self._prev_prediction = as64_core.prediction_info.prediction
 
         return Process.LOOP
 
@@ -176,10 +190,16 @@ class ProcessPostFadeout(Process):
         if as64_core.prediction_info.prediction in (121, 122) and self.loop_time() > 1:
             return ProcessPostFadeout.FLASH
 
+        if time.time() - as64_core.collection_time > 11:
+            self._death_check()
+
         if self.loop_time() < 6:
             return Process.LOOP
         else:
             return ProcessPostFadeout.COMPLETE
+
+    def _death_check(self):
+        pass
 
     def on_transition(self):
         print("PROCESS POST FADEOUT")
@@ -265,8 +285,11 @@ class ProcessReset(Process):
             as64_core.reset()
             time.sleep(self._restart_split_delay)
             as64_core.split()
-            as64_core.enable_fade_count(False)
-            as64_core.star_count = as64_core.route.initial_star
+
+        as64_core.enable_fade_count(False)
+        as64_core.star_count = as64_core.route.initial_star
+        as64_core.force_update()
+
         return ProcessReset.RESET
 
     def on_transition(self):
@@ -463,6 +486,7 @@ class ProcessDDDEntry(Process):
             return Process.LOOP
 
     def on_transition(self):
+        #
         print("PROCESS DDD ENTRY")
         as64_core.fps = 10
 
