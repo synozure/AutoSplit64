@@ -69,6 +69,12 @@ def get_default(section, key=None):
 def set_key(section, key, value):
     global _config
 
+    if section not in _config:
+        _config[section] = {}
+
+    if key not in _config[section]:
+        _config[section][key] = value
+
     if section in _config:
         if key in _config[section]:
             _config[section][key] = value
@@ -139,3 +145,4 @@ def generate_config():
     load_defaults()
     _config = copy.deepcopy(_defaults)
     save_config()
+    
