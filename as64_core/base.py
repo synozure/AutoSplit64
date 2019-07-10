@@ -52,6 +52,7 @@ class Base(Thread):
 
         self._black_threshold = config.get("thresholds", "black_threshold")
         self._white_threshold = config.get("thresholds", "white_threshold")
+        self._split_cooldown = config.get("general", "split_cooldown")
         self._probability_threshold = config.get("thresholds", "probability_threshold")
         self._confirmation_threshold = config.get("thresholds", "confirmation_threshold")
         self._prediction_processing_length = config.get("error", "processing_length")
@@ -206,6 +207,8 @@ class Base(Thread):
 
         total_predictions = len(self._predictions)
 
+        #print(as64.prediction_info.prediction, as64.prediction_info.probability)
+
         if as64.star_count - 1 <= as64.prediction_info.prediction <= as64.star_count + 1 or as64.prediction_info.prediction > 120:
             self._predictions.append(as64.prediction_info)
 
@@ -257,10 +260,14 @@ class Base(Thread):
     #
 
     def split(self):
+        if time.time() - as64.last_split < self._split_cooldown:
+            return
+
         if self.split_index() == len(self._route.splits):
             return
 
         livesplit.split(self._ls_socket)
+        as64.last_split = time.time()
 
     def reset(self):
         livesplit.reset(self._ls_socket)
