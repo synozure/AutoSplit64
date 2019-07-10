@@ -33,6 +33,7 @@ class SettingsDialog(QtWidgets.QDialog):
         self.general_menu = GeneralMenu()
         self.connection_menu = ConnectionMenu()
         self.thresholds_menu = ThresholdsMenu()
+        self.colour_thresholds_menu = ColourThresholdsMenu()
         self.error_menu = ErrorCorrectionMenu()
         self.adv_menu = AdvancedMenu()
 
@@ -51,12 +52,13 @@ class SettingsDialog(QtWidgets.QDialog):
         # Configure Widgets
         self.menu_list.setMinimumWidth(80)
         self.menu_list.setSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
-        self.menu_list.addItems(["General", "Connection", "Thresholds", "Error Correction", "Advanced"])
+        self.menu_list.addItems(["General", "Connection", "Thresholds", "Colour Thresholds", "Error Correction", "Advanced"])
         self.menu_list.setSpacing(8)
 
         self.stacked_widget.addWidget(self.general_menu)
         self.stacked_widget.addWidget(self.connection_menu)
         self.stacked_widget.addWidget(self.thresholds_menu)
+        self.stacked_widget.addWidget(self.colour_thresholds_menu)
         self.stacked_widget.addWidget(self.error_menu)
         self.stacked_widget.addWidget(self.adv_menu)
 
@@ -80,6 +82,13 @@ class SettingsDialog(QtWidgets.QDialog):
         self.cancel_btn.clicked.connect(self.cancel_clicked)
 
     def show(self):
+        self.general_menu.load_preferences()
+        self.connection_menu.load_preferences()
+        self.thresholds_menu.load_preferences()
+        self.colour_thresholds_menu.load_preferences()
+        self.error_menu.load_preferences()
+        self.adv_menu.load_preferences()
+
         super().show()
 
     def apply_clicked(self):
@@ -87,6 +96,7 @@ class SettingsDialog(QtWidgets.QDialog):
         self.general_menu.update_preferences()
         self.connection_menu.update_preferences()
         self.thresholds_menu.update_preferences()
+        self.colour_thresholds_menu.update_preferences()
         self.error_menu.update_preferences()
         self.adv_menu.update_preferences()
         config.save_config()
@@ -294,6 +304,169 @@ class ThresholdsMenu(BaseMenu):
 
         config.set_key('thresholds', 'black_threshold', float(self.black_le.text()))
         config.set_key('thresholds', 'white_threshold', float(self.white_le.text()))
+
+
+class ColourThresholdsMenu(BaseMenu):
+    def __init__(self, parent=None):
+        super().__init__(title="Colour Thresholds", parent=parent)
+
+        # Layouts
+        self.menu_layout = QtWidgets.QGridLayout()
+
+        # Widgets
+        self.split_type_lb = QtWidgets.QLabel("Split Type:")
+        self.split_type_cb = QtWidgets.QComboBox()
+        self.stacked_widget = QtWidgets.QStackedWidget()
+
+        # DDD Enter
+        self.ddd_enter_widget = QtWidgets.QWidget()
+        self.ddd_enter_widget.setLayout(QtWidgets.QGridLayout())
+        self.ddd_enter_widget.layout().setAlignment(QtCore.Qt.AlignLeft)
+        self.portal_lower_bound = SettingsColourWidget("Portal Lower Bound:", "split_ddd_enter", "portal_lower_bound", self.ddd_enter_widget)
+        self.portal_upper_bound = SettingsColourWidget("Portal Upper Bound:", "split_ddd_enter", "portal_upper_bound", self.ddd_enter_widget)
+        self.hat_lower_bound = SettingsColourWidget("Hat Lower Bound:", "split_ddd_enter", "hat_lower_bound", self.ddd_enter_widget)
+        self.hat_upper_bound = SettingsColourWidget("Hat Upper Bound:", "split_ddd_enter", "hat_upper_bound", self.ddd_enter_widget)
+
+        # Final Bowser
+        self.final_bowser_widget = QtWidgets.QWidget()
+        self.final_bowser_widget.setLayout(QtWidgets.QGridLayout())
+        self.final_bowser_widget.layout().setAlignment(QtCore.Qt.AlignLeft)
+        self.stage_lower_bound = SettingsColourWidget("Stage Lower Bound:", "split_final_star", "stage_lower_bound", self.final_bowser_widget)
+        self.stage_upper_bound = SettingsColourWidget("Stage Upper Bound:", "split_final_star", "stage_upper_bound", self.final_bowser_widget)
+        self.star_lower_bound = SettingsColourWidget("Star Lower Bound:", "split_final_star", "star_lower_bound", self.final_bowser_widget)
+        self.star_upper_bound = SettingsColourWidget("Star Upper Bound:", "split_final_star", "star_upper_bound", self.final_bowser_widget)
+
+        self.init()
+
+    def init(self):
+        # Set Layout
+        self.set_menu_layout(self.menu_layout)
+
+        # Configure Widgets
+        self.split_type_cb.setFixedWidth(100)
+        self.split_type_cb.addItem("DDD Enter")
+        self.split_type_cb.addItem("Final Bowser")
+        split_type_widget = QtWidgets.QWidget()
+        split_type_widget.setLayout(QtWidgets.QHBoxLayout())
+        split_type_widget.layout().addWidget(self.split_type_lb)
+        split_type_widget.layout().addWidget(self.split_type_cb)
+
+        self.stacked_widget.addWidget(self.ddd_enter_widget)
+        self.stacked_widget.addWidget(self.final_bowser_widget)
+
+        # DDD Split
+        self.ddd_enter_widget.layout().addWidget(self.portal_lower_bound, 0, 0)
+        self.ddd_enter_widget.layout().addItem(
+            QtWidgets.QSpacerItem(10, 10, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum), 0, 1)
+        self.ddd_enter_widget.layout().addWidget(self.portal_upper_bound, 1, 0)
+        self.ddd_enter_widget.layout().addWidget(self.hat_lower_bound, 2, 0)
+        self.ddd_enter_widget.layout().addWidget(self.hat_upper_bound, 3, 0)
+
+        # Final Bowser Split
+        self.final_bowser_widget.layout().addWidget(self.stage_lower_bound, 0, 0)
+        self.final_bowser_widget.layout().addItem(
+            QtWidgets.QSpacerItem(10, 10, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum), 0, 1)
+        self.final_bowser_widget.layout().addWidget(self.stage_upper_bound, 1, 0)
+        self.final_bowser_widget.layout().addWidget(self.star_lower_bound, 2, 0)
+        self.final_bowser_widget.layout().addWidget(self.star_upper_bound, 3, 0)
+
+
+        # Layout
+        self.menu_layout.addWidget(split_type_widget, 0, 0)
+        self.menu_layout.addItem(QtWidgets.QSpacerItem(10, 10, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding), 0, 2)
+
+        self.menu_layout.addItem(
+            QtWidgets.QSpacerItem(10, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum), 1, 0)
+
+        self.menu_layout.addWidget(HLine(), 2, 0, 1, 3)
+
+        self.menu_layout.addItem(
+            QtWidgets.QSpacerItem(10, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum), 3, 0)
+
+        self.menu_layout.addWidget(self.stacked_widget, 4, 0, 1, 3)
+
+        self.menu_layout.addItem(
+            QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding), 15, 0)
+
+        self.load_preferences()
+
+        # Connections
+        self.split_type_cb.currentIndexChanged.connect(self.index_changed)
+
+    def index_changed(self, index):
+        self.stacked_widget.setCurrentIndex(index)
+
+    def load_preferences(self):
+        self.portal_lower_bound.load_config()
+        self.portal_upper_bound.load_config()
+        self.hat_lower_bound.load_config()
+        self.hat_upper_bound.load_config()
+        self.stage_lower_bound.load_config()
+        self.stage_upper_bound.load_config()
+        self.star_lower_bound.load_config()
+        self.star_upper_bound.load_config()
+
+    def update_preferences(self):
+        self.portal_lower_bound.save_config()
+        self.portal_upper_bound.save_config()
+        self.hat_lower_bound.save_config()
+        self.hat_upper_bound.save_config()
+        self.stage_lower_bound.save_config()
+        self.stage_upper_bound.save_config()
+        self.star_lower_bound.save_config()
+        self.star_upper_bound.save_config()
+
+
+class SettingsColourWidget(QtWidgets.QWidget):
+    def __init__(self, label, config_section, config_key, parent=None):
+        super().__init__(parent=parent)
+
+        self._config_section = config_section
+        self._config_key = config_key
+
+        self.label = QtWidgets.QLabel(label)
+        self.red = QtWidgets.QLineEdit()
+        self.green = QtWidgets.QLineEdit()
+        self.blue = QtWidgets.QLineEdit()
+
+        self.int_validator = QtGui.QIntValidator()
+
+        self.initialize()
+
+    def initialize(self):
+        # Configure Widgets
+        self.red.setValidator(self.int_validator)
+        self.green.setValidator(self.int_validator)
+        self.blue.setValidator(self.int_validator)
+
+        self.label.setFixedWidth(100)
+        self.label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+
+        self.red.setFixedWidth(50)
+        self.green.setFixedWidth(50)
+        self.blue.setFixedWidth(50)
+
+        # Layout
+        layout = QtWidgets.QHBoxLayout()
+        self.setLayout(layout)
+
+        layout.addWidget(self.label)
+        layout.addWidget(self.red)
+        layout.addWidget(self.green)
+        layout.addWidget(self.blue)
+        layout.addItem(QtWidgets.QSpacerItem(10, 10, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding))
+
+    def load_config(self):
+        val = config.get(self._config_section, self._config_key)
+
+        self.red.setText(str(val[2]))
+        self.green.setText(str(val[1]))
+        self.blue.setText(str(val[0]))
+
+    def save_config(self):
+        val = [int(self.blue.text()), int(self.green.text()), int(self.red.text())]
+        config.set_key(self._config_section, self._config_key, val)
+
 
 
 class ConnectionMenu(BaseMenu):
