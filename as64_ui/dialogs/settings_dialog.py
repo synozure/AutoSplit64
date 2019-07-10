@@ -165,6 +165,9 @@ class GeneralMenu(BaseMenu):
         self.override_ver_cb = QtWidgets.QCheckBox()
         self.override_ver_combo = QtWidgets.QComboBox()
 
+        self.mid_run_lb = QtWidgets.QLabel("Allow Mid-Run Starts:")
+        self.mid_run_cb = QtWidgets.QCheckBox()
+
         self.init()
 
     def init(self):
@@ -176,17 +179,29 @@ class GeneralMenu(BaseMenu):
         self.override_ver_lb.setMaximumWidth(120)
         self.override_ver_cb.setMaximumWidth(20)
         self.override_ver_combo.setMaximumWidth(120)
-
         self.override_ver_combo.addItems(["JP", "US"])
 
+        self.mid_run_lb.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        self.mid_run_lb.setMaximumWidth(120)
+        self.mid_run_cb.setMaximumWidth(20)
+
         # Add Widgets
-        self.menu_layout.addWidget(self.override_ver_lb, 0, 0)
-        self.menu_layout.addWidget(self.override_ver_cb, 0, 1)
-        self.menu_layout.addItem(QtWidgets.QSpacerItem(10, 5, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum), 0, 2)
-        self.menu_layout.addWidget(self.override_ver_combo, 1, 1)
+        self.menu_layout.addWidget(self.mid_run_lb, 0, 0)
+        self.menu_layout.addWidget(self.mid_run_cb, 0, 1)
 
         self.menu_layout.addItem(
             QtWidgets.QSpacerItem(10, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum), 2, 0)
+
+        self.menu_layout.addWidget(HLine(), 3, 0, 1, 3)
+
+        self.menu_layout.addItem(
+            QtWidgets.QSpacerItem(10, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum), 4, 0)
+
+        self.menu_layout.addWidget(self.override_ver_lb, 5, 0)
+        self.menu_layout.addWidget(self.override_ver_cb, 5, 1)
+        self.menu_layout.addItem(
+            QtWidgets.QSpacerItem(10, 5, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum), 5, 2)
+        self.menu_layout.addWidget(self.override_ver_combo, 6, 1)
 
         self.menu_layout.addItem(QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding), 10, 0)
 
@@ -200,6 +215,7 @@ class GeneralMenu(BaseMenu):
 
     def load_preferences(self):
         self.override_ver_cb.setChecked(config.get("game", "override_version"))
+        self.mid_run_cb.setChecked(config.get("general", "mid_run_start_enabled"))
 
         if config.get("game", "version") == "US":
             self.override_ver_combo.setCurrentIndex(1)
@@ -210,6 +226,7 @@ class GeneralMenu(BaseMenu):
 
     def update_preferences(self):
         config.set_key("game", "override_version", self.override_ver_cb.isChecked())
+        config.set_key("general", "mid_run_start_enabled", self.mid_run_cb.isChecked())
         config.set_key("game", "version", self.override_ver_combo.itemText(self.override_ver_combo.currentIndex()))
 
 
