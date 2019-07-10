@@ -14,6 +14,7 @@ from .dialogs import AboutDialog, CaptureEditor, SettingsDialog, RouteEditor, Re
 class App(QtWidgets.QMainWindow):
     start = QtCore.pyqtSignal()
     stop = QtCore.pyqtSignal()
+    closed = QtCore.pyqtSignal()
 
     def __init__(self, parent=None):
         super().__init__(parent=parent)
@@ -107,6 +108,7 @@ class App(QtWidgets.QMainWindow):
         self.minimize_btn.clicked.connect(self.showMinimized)
         self.start_btn.clicked.connect(self.start_clicked)
         self.dialogs["route_editor"].route_updated.connect(self._on_route_update)
+        self.dialogs["settings_dialog"].applied.connect(self._stop)
 
     def update_display(self, split_index, current_star, split_star):
         if split_index > len(self.split_list.splits) - 1:
@@ -138,7 +140,7 @@ class App(QtWidgets.QMainWindow):
         self.start_btn.repaint()
 
     def open_route(self):
-        self.stop.emit()
+        self._stop()
 
         if config.get("route", "path") == "":
             return
@@ -322,3 +324,11 @@ class App(QtWidgets.QMainWindow):
             config.set_key("route", "path", prev_route)
             config.save_config()
             self.open_route()
+
+    def _stop(self):
+        self.stop.emit()
+        self.set_started(False)
+
+    def close(self):
+        self.stop.emit()
+        super().close()
