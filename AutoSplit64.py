@@ -36,6 +36,7 @@ class AutoSplit64(QtCore.QObject):
         self.app = App()
         self.app.start.connect(lambda: Thread(target=self.start).start())
         self.app.stop.connect(self.stop)
+        self.app.destroyed.connect(self.stop)
         self.error.connect(self.app.display_error_message)
 
     def start(self):
@@ -158,8 +159,10 @@ class AutoSplit64(QtCore.QObject):
         #
         ddd_portal_processor.add_transition(Transition(process_ddd_portal, ProcessFindDDDPortal.FADEOUT, process_fadeout))
         ddd_portal_processor.add_transition(Transition(process_fadeout, ProcessFadeout.COMPLETE, process_ddd_portal))
+        ddd_portal_processor.add_transition(Transition(process_fadeout, ProcessFadeout.RESET, process_reset))
 
         ddd_entry_processor.add_transition(Transition(process_ddd_entry, ProcessDDDEntry.FADEOUT, process_fadeout))
+        ddd_entry_processor.add_transition(Transition(process_fadeout, ProcessFadeout.RESET, process_reset))
 
         ddd_processor.add_transition(Transition(ddd_portal_processor, ProcessFindDDDPortal.FOUND, ddd_entry_processor))
         ddd_processor.add_transition(Transition(ddd_entry_processor, ProcessFadeout.COMPLETE, ddd_portal_processor))
