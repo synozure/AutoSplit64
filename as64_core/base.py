@@ -100,6 +100,7 @@ class Base(Thread):
         as64.register_split_processor = self.register_split_processor
         as64.set_update_listener = self.set_update_listener
         as64.set_error_listener = self.set_error_listener
+        as64.force_update = self._update_occurred
         as64.split = self.split
         as64.reset = self.reset
         as64.skip = self.skip
@@ -206,8 +207,6 @@ class Base(Thread):
             return
 
         total_predictions = len(self._predictions)
-
-        #print(as64.prediction_info.prediction, as64.prediction_info.probability)
 
         if as64.star_count - 1 <= as64.prediction_info.prediction <= as64.star_count + 1 or as64.prediction_info.prediction > 120:
             self._predictions.append(as64.prediction_info)
