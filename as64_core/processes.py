@@ -23,8 +23,17 @@ class ProcessRunStart(Process):
         if as64_core.fade_status in (as64_core.FADEOUT_COMPLETE, as64_core.FADEOUT_PARTIAL):
             return ProcessRunStart.FADEOUT
         else:
+            if as64_core.split_index() > 0:
+                prev_split_star = as64_core.route.splits[as64_core.split_index()-1].star_count
+            else:
+                prev_split_star = as64_core.route.initial_star
+
             if as64_core.prediction_info.prediction == as64_core.star_count and as64_core.prediction_info.probability > config.get("thresholds", "probability_threshold"):
                 as64_core.enable_fade_count(True)
+                return ProcessRunStart.START
+            elif prev_split_star <= as64_core.prediction_info.prediction <= as64_core.current_split().star_count and as64_core.prediction_info.probability > config.get("thresholds", "probability_threshold"):
+                as64_core.enable_fade_count(True)
+                as64_core.set_star_count(as64_core.prediction_info.prediction)
                 return ProcessRunStart.START
 
         return Process.LOOP
@@ -273,8 +282,8 @@ class ProcessFinalStageEntry(Process):
     def __init__(self,):
         super().__init__()
 
-        self.bowser_lower_bound = [0, 20, 0]
-        self.bowser_upper_bound = [40, 70, 10]
+        self.bowser_lower_bound = config.get("split_final_star", "stage_lower_bound")
+        self.bowser_upper_bound = config.get("split_final_star", "stage_upper_bound")
 
     def execute(self):
         no_hud = as64_core.get_region(as64_core.NO_HUD_REGION)
@@ -310,8 +319,10 @@ class ProcessFinalStarSpawn(Process):
         self._iteration_value = {0: 1, 1: 4, 2: 1}
         self._looping_iteration = 0
 
-        self.star_lower_bound = [0, 180, 180]
-        self.star_upper_bound = [120, 255, 255]
+        # TODO: Change lower bound to 0, 190, 190. This fixes Yales problem, however may make it not work correctly for other people
+        # So instead maybe keep at 0, 180, 180, and just advise to use the new values in settings
+        self.star_lower_bound = config.get("split_final_star", "star_lower_bound")
+        self.star_upper_bound = config.get("split_final_star", "star_upper_bound")
 
     def execute(self):
         if as64_core.fade_status in (as64_core.FADEOUT_PARTIAL, as64_core.FADEOUT_COMPLETE):
@@ -319,9 +330,11 @@ class ProcessFinalStarSpawn(Process):
 
         if self._star_visible() and self.loop_time() > 30:
             if self._looping_iteration == len(self._iteration_value):
+                print("spawned :)")
                 return ProcessFinalStarSpawn.SPAWNED
             else:
                 try:
+                    print("iter", self._looping_iteration)
                     time.sleep(self._iteration_value[self._looping_iteration])
                 except IndexError:
                     pass
@@ -360,14 +373,15 @@ class ProcessFinalStarGrab(Process):
     def __init__(self):
         super().__init__()
 
-        self.star_lower_bound = [0, 180, 180]
-        self.star_upper_bound = [120, 255, 255]
+        self.star_lower_bound = config.get("split_final_star", "star_lower_bound")
+        self.star_upper_bound = config.get("split_final_star", "star_upper_bound")
 
     def execute(self):
         if as64_core.fade_status in (as64_core.FADEOUT_PARTIAL, as64_core.FADEOUT_COMPLETE):
             return ProcessFinalStageEntry.FADEOUT
 
         if not self._star_visible():
+            print("Grabbed!")
             as64_core.split()
             return ProcessFinalStarGrab.COMPLETE
 
@@ -399,8 +413,8 @@ class ProcessFindDDDPortal(Process):
     def __init__(self,):
         super().__init__()
 
-        self.portal_lower_bound = [90, 5, 5]
-        self.portal_upper_bound = [255, 30, 30]
+        self.portal_lower_bound = config.get("split_ddd_enter", "portal_lower_bound")
+        self.portal_upper_bound = config.get("split_ddd_enter", "portal_upper_bound")
 
     def execute(self):
         no_hud = as64_core.get_region(as64_core.GAME_REGION)
@@ -433,14 +447,14 @@ class ProcessDDDEntry(Process):
     def __init__(self,):
         super().__init__()
 
-        self.lower_bound = np.array([0, 0, 80], dtype="uint8")
-        self.upper_bound = np.array([30, 30, 255], dtype="uint8")
+        self.lower_bound = np.array(config.get("split_ddd_enter", "hat_lower_bound"), dtype="uint8")
+        self.upper_bound = np.array(config.get("split_ddd_enter", "hat_upper_bound"), dtype="uint8")
 
     def execute(self):
         no_hud = as64_core.get_region(as64_core.NO_HUD_REGION)
 
         if as64_core.fade_status in (as64_core.FADEOUT_PARTIAL, as64_core.FADEOUT_COMPLETE):
-            return ProcessFindDDDPortal.FADEOUT
+            return ProcessDDDEntry.FADEOUT
 
         if not cv2.inRange(no_hud, self.lower_bound, self.upper_bound).any():
             as64_core.split()
