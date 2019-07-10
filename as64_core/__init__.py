@@ -28,6 +28,7 @@ NO_HUD_REGION = constants.NO_HUD_REGION
 RESET_REGION = constants.RESET_REGION
 FADEOUT_REGION = constants.FADEOUT_REGION
 FADEIN_REGION = constants.FADEIN_REGION
+POWER_REGION = constants.POWER_REGION
 
 
 #
@@ -61,6 +62,7 @@ game_version: str = GAME_JP
 route = Route()
 route_length: int = 0
 star_count: int = 0
+last_split:int = 0
 collection_time: int = 0
 fadeout_count: int = 0
 fadein_count: int = 0
@@ -178,4 +180,8 @@ def set_update_listener(listener) -> None:
 
 
 def set_error_listener(listener) -> None:
+    pass
+
+
+def force_update() -> None:
     pass
