@@ -28,7 +28,7 @@ For details on proper emulator configuration see Giboss's [Setup Guide](https://
 If attempting to use an emulator, you may also need to capture the game feed from OBS instead of Project64.
 
 ## Release
-[Version 0.1.1.1](https://github.com/synozure/AutoSplit64/releases)
+[Version 0.1.2.1](https://github.com/synozure/AutoSplit64/releases)
 
 ## Features
 * Automatically start/reset timer on console reset
