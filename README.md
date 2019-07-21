@@ -57,7 +57,9 @@ All windows and options are accessed via the right-click menu:
 ### LiveSplit Server
 AutoSplit64 communicates with LiveSplit via the LiveSplit Server component. 
 
-Please download the latest version [here](https://github.com/LiveSplit/LiveSplit.Server).
+Please download the latest version [here](https://github.com/LiveSplit/LiveSplit.Server/releases/download/1.7.2/LiveSplit.Server_1.7.2.zip).
+
+For installation instructions, see LiveSplit Server's [readme](https://github.com/LiveSplit/LiveSplit.Server/blob/master/README.md)
 
 ### Game Capture
 To be able to run correctly, we must let AutoSplit 64 know where to capture.
